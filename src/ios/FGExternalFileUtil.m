@@ -31,7 +31,7 @@
     
     NSString *path = [command.arguments objectAtIndex:0]; 
     NSString *uti = [command.arguments objectAtIndex:1]; 
-    NSURL *url = [NSURL URLWithString:path]
+    NSURL *url = [NSURL URLWithString:path];
     
     NSLog(@"path %@, uti:%@", path, uti);
     
