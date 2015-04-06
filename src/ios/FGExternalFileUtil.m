@@ -31,11 +31,12 @@
     
     NSString *path = [command.arguments objectAtIndex:0]; 
     NSString *uti = [command.arguments objectAtIndex:1]; 
+    NSURL *url = [NSURL URLWithString:path]
     
     NSLog(@"path %@, uti:%@", path, uti);
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL fileExists = [fileManager fileExistsAtPath:path];
+    BOOL fileExists = [fileManager fileExistsAtPath:[url path]];
     
     if(!fileExists){
         NSArray *parts = [path componentsSeparatedByString:@"/"];
@@ -51,7 +52,7 @@
         localFile = [documentsDirectory stringByAppendingPathComponent:previewDocumentFileName];
         [fileRemote writeToFile:localFile atomically:YES];
     } else {
-        localFile = path;
+        localFile = [url path];
     }
     //NSLog(@"Resource file '%@' has been written to the Documents directory from online", previewDocumentFileName);
     
